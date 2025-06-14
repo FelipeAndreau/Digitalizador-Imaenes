@@ -1,0 +1,536 @@
+/* src/App.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.App {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1a2a6c, #2a4858);
+  color: white;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  animation: fadeIn 0.8s ease-in;
+  padding: 0 1rem;
+}
+
+.app-header > div {
+  flex: 1 1 auto;
+}
+
+.app-header h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #64b5f6, #90caf9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Eliminar el párrafo existente */
+.app-header p {
+  display: none;
+}
+
+.btn-logout {
+  background-color: #ffffff;
+  color: #ba6e3a;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-logout:hover {
+  background-color: #ffe5cc;
+}
+
+.gallery-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: 2px solid rgba(100, 181, 246, 0.3);
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.gallery-btn:hover {
+  background: rgba(100, 181, 246, 0.2);
+  transform: translateY(-2px);
+  border-color: #64b5f6;
+}
+
+/* ---------- IMAGE PANELS ---------- */
+.image-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  animation: slideUp 0.6s ease-out;
+  width: 100%;
+  max-width: 800px;  /* Reducido para mejor visualización vertical */
+  margin: 0 auto;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  flex: 1 1 0;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.panel:hover {
+  transform: translateY(-5px);
+}
+
+.panel h2 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.image-drop-area {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  text-align: center;
+  padding: 1rem;
+  user-select: none;
+  font-size: 1rem;
+  overflow: hidden;
+  z-index: 0;
+  transition: all 0.3s ease;
+}
+
+.image-drop-area:hover {
+  border-color: #64b5f6;
+}
+
+.image-drop-area span {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+}
+
+.image-drop-area.digitalized {
+  background: rgba(255, 255, 255, 0.08);
+  cursor: default;
+}
+
+/* ---------- BUTTONS ---------- */
+button {
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #90caf9;
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #64b5f6, #2196f3);
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+button:disabled {
+  background: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: default;
+}
+
+/* Estilo para botón "Reiniciar" (último botón en cada panel) */
+.panel > button:last-child {
+  background: #fff;
+  color: #1a1a1a;
+  margin-top: 0.3rem;
+}
+
+/* ---------- PARAM GROUPS ---------- */
+.param-group {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.param-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+  accent-color: #64b5f6;
+}
+
+.presets {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.presets button {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0.3rem;
+  color: white;
+  font-weight: 400;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.presets button:hover {
+  background: rgba(100, 181, 246, 0.4);
+}
+
+.labels-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.3rem;
+}
+
+/* ---------- PARAMS SECTION ---------- */
+.params {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  animation: slideUp 0.8s ease-out;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.params h2 {
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.digitalization-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.digitalization-row > .param-group {
+  flex: 1 1 45%;
+  min-width: 280px;
+}
+
+/* Nuevo estilo para los botones de control */
+.control-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.control-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 2px solid rgba(100, 181, 246, 0.3);
+  transition: all 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+}
+
+.control-button:hover {
+  background: rgba(100, 181, 246, 0.2);
+  border-color: #64b5f6;
+}
+
+.control-button.active {
+  background: linear-gradient(45deg, #64b5f6, #2196f3);
+  border-color: transparent;
+}
+
+/* Estilo para los botones de relación de aspecto */
+.aspect-ratio-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.aspect-ratio-buttons button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(100, 181, 246, 0.3);
+  border-radius: 8px;
+  padding: 0.5rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aspect-ratio-buttons button:hover {
+  background: rgba(100, 181, 246, 0.2);
+  transform: translateY(-2px);
+}
+
+.aspect-ratio-buttons button.active {
+  background: linear-gradient(45deg, #64b5f6, #2196f3);
+  border-color: transparent;
+}
+
+/* Estilos para el menú */
+.menu-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.hamburger {
+  width: 24px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 60px;
+  right: 1rem;
+  background: linear-gradient(135deg, #1a2a6c, #2a4858);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.menu-content button {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.menu-content button:hover {
+  background: rgba(100, 181, 246, 0.2);
+  transform: translateX(5px);
+}
+
+.format-selector {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.format-selector label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.format-selector select {
+  width: 100%;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(100, 181, 246, 0.3);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.format-selector select:hover {
+  border-color: #64b5f6;
+}
+
+.format-selector select option {
+  background: #1a2a6c;
+  color: white;
+}
+
+/* ---------- COMPRESSION CONTROL ---------- */
+.compression-control {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.compression-labels {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.compression-control input[type="range"] {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  background: rgba(100, 181, 246, 0.3);
+  border-radius: 2px;
+  outline: none;
+}
+
+.compression-control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #64b5f6;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.compression-control input[type="range"]::-webkit-slider-thumb:hover {
+  background: #2196f3;
+  transform: scale(1.1);
+}
+
+/* Media Queries para móviles y tablets */
+@media (max-width: 768px) {
+  .App {
+    padding: 1rem;
+  }
+
+  .image-panels {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .panel {
+    min-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .digitalization-row {
+    flex-direction: column;
+  }
+
+  .digitalization-row > .param-group {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .app-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn-logout {
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .panel h2 {
+    font-size: 1.25rem;
+  }
+
+  .image-drop-area {
+    height: 150px;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .presets button {
+    font-size: 0.75rem;
+  }
+
+  .labels-range {
+    font-size: 0.7rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .app-header p {
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

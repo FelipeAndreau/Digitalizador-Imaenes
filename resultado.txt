@@ -1,0 +1,4 @@
+Changed database context to 'master'.
+Changed database context to 'DigitalizacionImagenesBD'.
+
+(3 rows affected)
