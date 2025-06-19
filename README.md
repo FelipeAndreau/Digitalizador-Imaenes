@@ -170,9 +170,6 @@ npm start
 
 ---
 
-## 📘 Licencia
-
-Este proyecto es de código abierto bajo la licencia MIT.
 
 
 
